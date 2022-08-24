@@ -20,57 +20,53 @@ let FormattedTime = {
     left: 0,
 }
 
-function formatDuration (seconds) {
-    if (seconds == 0) return 'now';
+const calculateYears = (seconds) => {
+        while (seconds >= oneYear) {
+            FormattedTime.years = Math.floor((seconds / oneDay) / 365);
+            seconds = seconds - (FormattedTime.years * oneYear);
+        }
+        FormattedTime.years != 0 ? FormattedTime.years > 1 ? FormattedTime.years = FormattedTime.years + moreYearsUnit : FormattedTime.years = FormattedTime.years + singleYearUnit : delete FormattedTime.years;
+        if (FormattedTime.years > 0) return FormattedTime.years;
+}
 
-    // calculate years
-    while (seconds >= oneYear) {
-        FormattedTime.years = Math.floor((seconds / oneDay) / 365);
-        console.log(FormattedTime.years);
-        // update seconds left
-        seconds = seconds - (FormattedTime.years * oneYear);
-        FormattedTime.years
-    }
+const calculateDays = (seconds) => {
+        while (seconds >= oneDay) {
+            FormattedTime.days = Math.floor(seconds / oneDay);
+            seconds = seconds - (FormattedTime.days * oneDay);
+        }
+        FormattedTime.days != 0 ? FormattedTime.days > 1 ? FormattedTime.days = FormattedTime.days + moreDaysUnit : FormattedTime.days = FormattedTime.days + singleDayUnit : delete FormattedTime.days;
+        if (FormattedTime.days > 0) return FormattedTime.days;
+}
 
-    FormattedTime.years != 0 ? FormattedTime.years > 1 ? FormattedTime.years = FormattedTime.years + moreYearsUnit : FormattedTime.years = FormattedTime.years + singleYearUnit : delete FormattedTime.years;
-    console.log(FormattedTime.years);
-
-    // calculate days
-    while (seconds >= oneDay) {
-        FormattedTime.days = Math.floor(seconds / oneDay);
-        console.log(FormattedTime.days)
-        // update seconds left
-        seconds = seconds - (FormattedTime.days * oneDay);
-    }
-
-    FormattedTime.days != 0 ? FormattedTime.days > 1 ? FormattedTime.days = FormattedTime.days + moreDaysUnit : FormattedTime.days = FormattedTime.days + singleDayUnit : delete FormattedTime.days;
-    console.log(FormattedTime.days);
-
-    // calculate hours
+const calculateHours = (seconds) => {
     while (seconds >= oneHour) {
         FormattedTime.hours = Math.floor(seconds / oneHour);
-        console.log(FormattedTime.hours)
-        // update seconds left
         seconds = seconds - (FormattedTime.hours * oneHour);
     }
-
     FormattedTime.hours != 0 ? FormattedTime.hours > 1 ? FormattedTime.hours = FormattedTime.hours + moreHoursUnit : FormattedTime.hours = FormattedTime.hours + singleHourUnit : delete FormattedTime.hours;
-    console.log(FormattedTime.hours);
+    if (FormattedTime.hours > 0) return FormattedTime.hours;
+}
 
-    // calculate minutes
+const calculateMinutes = (seconds) => {
     while (seconds >= oneMinute) {
         FormattedTime.minutes = Math.floor(seconds / oneMinute);
-        console.log(FormattedTime.minutes)
-        // update seconds left
         seconds = seconds - (FormattedTime.minutes * oneMinute);
     }
-
     FormattedTime.minutes != 0 ? FormattedTime.minutes > 1 ? FormattedTime.minutes = FormattedTime.minutes + moreMinutesUnit : FormattedTime.minutes = FormattedTime.minutes + singleMinuteUnit : delete FormattedTime.minutes;
-    console.log(FormattedTime.minutes);
+    if (FormattedTime.minutes > 0) return FormattedTime.minutes;
+}
 
+function formatDuration (seconds) {
+    if (seconds == 0) return 'now';
+    calculateYears();
+    calculateDays();
+    calculateHours();
+    calculateMinutes();
+    calculateSeconds();
+
+    
     FormattedTime.left = seconds;
     FormattedTime.left != 0 ? FormattedTime.left > 1 ? FormattedTime.left = FormattedTime.left + moreSecondsUnit : FormattedTime.left = FormattedTime.left + singleSecondUnit : delete FormattedTime.left;
-    console.log(FormattedTime.left);
 
     let length = Object.keys(FormattedTime).length;
     if (length > 1) {
