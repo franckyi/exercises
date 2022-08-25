@@ -2,70 +2,65 @@ const oneYear = 31536000;
 const oneDay = 86400;
 const oneHour = 3600;
 const oneMinute = 60;
-const singleYearUnit = ' year';
-const moreYearsUnit = ' years';
-const singleDayUnit = ' day';
-const moreDaysUnit = ' days';
-const singleHourUnit = ' hour';
-const moreHoursUnit = ' hours';
-const singleMinuteUnit = ' minute';
-const moreMinutesUnit = ' minutes';
-const singleSecondUnit = ' second';
-const moreSecondsUnit = ' seconds';
-let FormattedTime = {
+let Time = {
     years: 0,
     days: 0,
     hours: 0,
     minutes: 0,
-    leftSeconds: 0,
+    seconds: 0,
 }
 
 const calculateYears = (seconds) => {
-    console.log(seconds)
         while (seconds >= oneYear) {
-            FormattedTime.years = Math.floor((seconds / oneDay) / 365);
-            seconds = seconds - (FormattedTime.years * oneYear);
+            Time.years = Math.floor((seconds / oneDay) / 365);
+            seconds = seconds - (Time.years * oneYear);
         }
-        FormattedTime.years != 0 ? FormattedTime.years > 1 ? FormattedTime.years = FormattedTime.years + moreYearsUnit : FormattedTime.years = FormattedTime.years + singleYearUnit : delete FormattedTime.years;
-        if (FormattedTime.years != 0) return FormattedTime.years;
+        if (Time.years != 0) {
+            Time.years > 1 ?
+            Time.years = Time.years + ' years' : Time.years = Time.years + ' year';
+        }
+        else delete Time.years;
 }
 
 const calculateDays = (seconds) => {
-    console.log(seconds)
         while (seconds >= oneDay) {
-            FormattedTime.days = Math.floor(seconds / oneDay);
-            seconds = seconds - (FormattedTime.days * oneDay);
+            Time.days = Math.floor(seconds / oneDay);
+            seconds = seconds - (Time.days * oneDay);
         }
-        FormattedTime.days != 0 ? FormattedTime.days > 1 ? FormattedTime.days = FormattedTime.days + moreDaysUnit : FormattedTime.days = FormattedTime.days + singleDayUnit : delete FormattedTime.days;
-        if (FormattedTime.days != 0) return FormattedTime.days;
+        if (Time.days != 0) {
+            Time.days > 1 ?
+            Time.days = Time.days + ' days' : Time.days = Time.days + ' day';
+        } else delete Time.days;
 }
 
 const calculateHours = (seconds) => {
-    console.log(seconds)
     while (seconds >= oneHour) {
-        FormattedTime.hours = Math.floor(seconds / oneHour);
-        seconds = seconds - (FormattedTime.hours * oneHour);
+        Time.hours = Math.floor(seconds / oneHour);
+        seconds = seconds - (Time.hours * oneHour);
     }
-    FormattedTime.hours != 0 ? FormattedTime.hours > 1 ? FormattedTime.hours = FormattedTime.hours + moreHoursUnit : FormattedTime.hours = FormattedTime.hours + singleHourUnit : delete FormattedTime.hours;
-    if (FormattedTime.hours != 0) return FormattedTime.hours;
+    if (Time.hours != 0) {
+        Time.hours > 1 ?
+        Time.hours = Time.hours + ' hours' : Time.hours = Time.hours + ' hour';
+    } else delete Time.hours;
 }
 
 const calculateMinutes = (seconds) => {
-    console.log(seconds)
     while (seconds >= oneMinute) {
-        FormattedTime.minutes = Math.floor(seconds / oneMinute);
-        console.log(FormattedTime.minutes)
-        console.log(seconds)
-        FormattedTime.leftSeconds = seconds - (FormattedTime.minutes * oneMinute);
+        Time.minutes = Math.floor(seconds / oneMinute);
+        seconds = seconds % oneMinute;
     }
-    FormattedTime.minutes != 0 ? FormattedTime.minutes > 1 ? FormattedTime.minutes = FormattedTime.minutes + moreMinutesUnit : FormattedTime.minutes = FormattedTime.minutes + singleMinuteUnit : delete FormattedTime.minutes;
-    if (FormattedTime.minutes != 0) return FormattedTime.minutes;
+    if (Time.minutes != 0) {
+        Time.minutes > 1 ?
+        Time.minutes = Time.minutes + ' minutes' : Time.minutes = Time.minutes + ' minute';
+    } else delete Time.minutes;
 }
 
 const calculateSeconds = (seconds) => {
-    FormattedTime.leftSeconds = seconds;
-    FormattedTime.leftSeconds != 0 ? FormattedTime.leftSeconds > 1 ? FormattedTime.leftSeconds = FormattedTime.leftSeconds + moreSecondsUnit : FormattedTime.leftSeconds = FormattedTime.leftSeconds + singleSecondUnit : delete FormattedTime.leftSeconds;
-    if (FormattedTime.seconds > 0) return FormattedTime.seconds;
+    if (seconds != 0) {
+        seconds > 1 ?
+        seconds = seconds + ' seconds' : seconds = seconds + ' second'; 
+    } else delete Time.seconds 
+    return seconds;
 }
 
 function formatDuration (seconds) {
@@ -76,19 +71,19 @@ function formatDuration (seconds) {
     calculateMinutes(seconds);
     calculateSeconds(seconds);
 
-    let length = Object.keys(FormattedTime).length;
+    let length = Object.keys(Time).length;
     if (length > 1) {
-        for (let k in FormattedTime) {         
-            if ( FormattedTime[k] == Object.values(FormattedTime)[length-1] ) {
-                FormattedTime[k] = 'and ' + FormattedTime[k];
+        for (let k in Time) {         
+            if ( Time[k] == Object.values(Time)[length-1] ) {
+                Time[k] = 'and ' + Time[k];
             } 
         }
     }
-    let result = Object.values(FormattedTime).join(', ').replace(/,\s[a]/g, ' a');
-    return result;
+    let FormattedTime = Object.values(Time).join(', ').replace(/,\s[a]/g, ' a');
+    return FormattedTime;
 }
 
-console.log(formatDuration(62))
+console.log(formatDuration(120))
 
 // Test.assertEquals(formatDuration(1), "1 second");
 // Test.assertEquals(formatDuration(62), "1 minute and 2 seconds");
