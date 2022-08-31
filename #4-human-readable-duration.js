@@ -45,45 +45,53 @@ const calculateHours = (seconds) => {
 }
 
 const calculateMinutes = (seconds) => {
-    while (seconds >= oneMinute) {
-        Time.minutes = Math.floor(seconds / oneMinute);
-        seconds = seconds % oneMinute;
+    Time.seconds = seconds;
+    while (Time.seconds >= oneMinute) {
+        Time.minutes = Math.floor(Time.seconds / oneMinute);
+        Time.seconds = Time.seconds % oneMinute;
     }
-    if (Time.minutes != 0) {
+    if (Time.minutes > 0) {
         Time.minutes > 1 ?
         Time.minutes = Time.minutes + ' minutes' : Time.minutes = Time.minutes + ' minute';
     } else delete Time.minutes;
+    seconds = Time.seconds;
 }
 
-const calculateSeconds = (seconds) => {
-    if (seconds != 0) {
-        seconds > 1 ?
-        seconds = seconds + ' seconds' : seconds = seconds + ' second'; 
-    } else delete Time.seconds 
-    return seconds;
+const calculateSeconds = () => {
+    if (Time.seconds > 0) {
+        Time.seconds > 1 ?
+        Time.seconds = Time.seconds + ' seconds' : Time.seconds = Time.seconds + ' second'; 
+    } else {
+        delete Time.seconds;
+    }
 }
 
 function formatDuration (seconds) {
     if (seconds == 0) return 'now';
-    calculateYears(seconds);
-    calculateDays(seconds);
-    calculateHours(seconds);
+    Time.seconds = seconds;
+    calculateYears();
+    calculateDays();
+    calculateHours();
     calculateMinutes(seconds);
     calculateSeconds(seconds);
 
     let length = Object.keys(Time).length;
+    let lastValue = Object.values(Time).length;
+    lastValue
     if (length > 1) {
-        for (let k in Time) {         
-            if ( Time[k] == Object.values(Time)[length-1] ) {
-                Time[k] = 'and ' + Time[k];
-            } 
+        for (let k in Time) {   
+            if ( Time[k].value != 0 ) {
+                if (Time[k].value == Object.values(Time[k]).length) { 
+                    console.log('uguale')
+                    // Time[k].value = Time[k].value + 'and ' + Time[k].value;
+                }
+            } else { delete Time[k] }
         }
-    }
-    let FormattedTime = Object.values(Time).join(', ').replace(/,\s[a]/g, ' a');
-    return FormattedTime;
+    } 
+    return Object.values(Time).join(', ').replace(/,\s[a]/g, ' a');
 }
 
-console.log(formatDuration(120))
+console.log(formatDuration(128))
 
 // Test.assertEquals(formatDuration(1), "1 second");
 // Test.assertEquals(formatDuration(62), "1 minute and 2 seconds");
