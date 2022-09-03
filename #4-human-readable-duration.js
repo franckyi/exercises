@@ -11,7 +11,7 @@ let Time = {
 }
 let formattedTime;
 
-const CALCULATE_YEARS = (seconds) => {
+const calculateYears = (seconds) => {
     Time.seconds = seconds;
         while (Time.seconds >= ONE_YEAR) {
             Time.years = Math.floor((Time.seconds / ONE_DAY) / 365);
@@ -24,7 +24,7 @@ const CALCULATE_YEARS = (seconds) => {
         seconds = Time.seconds;
     }
 
-const CALCULATE_DAYS = (seconds) => {
+const calculateDays = (seconds) => {
     Time.seconds = seconds;
         while (seconds >= ONE_DAY) {
             Time.days = Math.floor(Time.seconds / ONE_DAY);
@@ -37,7 +37,7 @@ const CALCULATE_DAYS = (seconds) => {
         seconds = Time.seconds;
 }
 // todo: change 60 minutes to 1 hour
-const CALCULATE_HOURS = (seconds) => {
+const calculateHours = (seconds) => {
     Time.seconds = seconds;
     while (Time.seconds >= ONE_HOUR) {
         Time.hours = Math.floor(Time.seconds / ONE_HOUR);
@@ -56,7 +56,7 @@ const CALCULATE_HOURS = (seconds) => {
     seconds = Time.seconds;
 }
 
-const CALCULATE_MINUTES = (seconds) => {
+const calculateMinutes = (seconds) => {
     Time.seconds = seconds;
     while (Time.seconds >= ONE_MINUTE) {
         Time.minutes = Math.floor(Time.seconds / ONE_MINUTE);
@@ -70,14 +70,14 @@ const CALCULATE_MINUTES = (seconds) => {
     seconds = Time.seconds;
 }
 
-const CALCULATE_SECONDS = () => {
+const calculateSeconds = () => {
     if (Time.seconds > 0) {
         Time.seconds > 1 ?
         Time.seconds = Time.seconds + ' seconds' : Time.seconds = Time.seconds + ' second'; 
     } else delete Time.seconds;
 }
 
-const FORMAT_RESULT = () => {
+const formatResult = () => {
     formattedTime = Object.values(Time).join(', ');
     const lastCommaIndex = formattedTime.lastIndexOf(', ');
     const lastValue = formattedTime.substring(lastCommaIndex, formattedTime.length).replace(/\,/g, ' and ');
@@ -87,12 +87,12 @@ const FORMAT_RESULT = () => {
 function formatDuration (seconds) {
     if (seconds == 0) return 'now';
     Time.seconds = seconds;
-    CALCULATE_YEARS();
-    CALCULATE_DAYS();
-    CALCULATE_HOURS();
-    CALCULATE_MINUTES(seconds);
-    CALCULATE_SECONDS(seconds);
-    FORMAT_RESULT();
+    calculateYears();
+    calculateDays();
+    calculateHours();
+    calculateMinutes(seconds);
+    calculateSeconds(seconds);
+    formatResult();
     return formattedTime;
 }
 console.log(formatDuration(3600))
