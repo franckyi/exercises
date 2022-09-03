@@ -1,7 +1,7 @@
-const oneYear = 31536000;
-const oneDay = 86400;
-const oneHour = 3600;
-const oneMinute = 60;
+const ONE_YEAR = 31536000;
+const ONE_DAY = 86400;
+const ONE_HOUR = 3600;
+const ONE_MINUTE = 60;
 let Time = {
     years: 0,
     days: 0,
@@ -11,11 +11,11 @@ let Time = {
 }
 let formattedTime;
 
-const calculateYears = (seconds) => {
+const CALCULATE_YEARS = (seconds) => {
     Time.seconds = seconds;
-        while (Time.seconds >= oneYear) {
-            Time.years = Math.floor((Time.seconds / oneDay) / 365);
-            Time.seconds = seconds - (Time.years * oneYear);
+        while (Time.seconds >= ONE_YEAR) {
+            Time.years = Math.floor((Time.seconds / ONE_DAY) / 365);
+            Time.seconds = seconds - (Time.years * ONE_YEAR);
         }
         if (Time.years != 0) {
             Time.years > 1 ?
@@ -24,11 +24,11 @@ const calculateYears = (seconds) => {
         seconds = Time.seconds;
     }
 
-const calculateDays = (seconds) => {
+const CALCULATE_DAYS = (seconds) => {
     Time.seconds = seconds;
-        while (seconds >= oneDay) {
-            Time.days = Math.floor(Time.seconds / oneDay);
-            Time.seconds = seconds - (Time.days * oneDay);
+        while (seconds >= ONE_DAY) {
+            Time.days = Math.floor(Time.seconds / ONE_DAY);
+            Time.seconds = seconds - (Time.days * ONE_DAY);
         }
         if (Time.days != 0) {
             Time.days > 1 ?
@@ -37,11 +37,11 @@ const calculateDays = (seconds) => {
         seconds = Time.seconds;
 }
 // todo: change 60 minutes to 1 hour
-const calculateHours = (seconds) => {
+const CALCULATE_HOURS = (seconds) => {
     Time.seconds = seconds;
-    while (Time.seconds >= oneHour) {
-        Time.hours = Math.floor(Time.seconds / oneHour);
-        Time.seconds = seconds - (Time.hours * oneHour);
+    while (Time.seconds >= ONE_HOUR) {
+        Time.hours = Math.floor(Time.seconds / ONE_HOUR);
+        Time.seconds = seconds - (Time.hours * ONE_HOUR);
             console.log('qui');
     }
     console.log(Time.hours);
@@ -56,11 +56,11 @@ const calculateHours = (seconds) => {
     seconds = Time.seconds;
 }
 
-const calculateMinutes = (seconds) => {
+const CALCULATE_MINUTES = (seconds) => {
     Time.seconds = seconds;
-    while (Time.seconds >= oneMinute) {
-        Time.minutes = Math.floor(Time.seconds / oneMinute);
-        Time.seconds = seconds - (Time.minutes * oneMinute);
+    while (Time.seconds >= ONE_MINUTE) {
+        Time.minutes = Math.floor(Time.seconds / ONE_MINUTE);
+        Time.seconds = seconds - (Time.minutes * ONE_MINUTE);
     }
     console.log(Time.minutes)
     if (Time.minutes > 0) {
@@ -70,14 +70,14 @@ const calculateMinutes = (seconds) => {
     seconds = Time.seconds;
 }
 
-const calculateSeconds = () => {
+const CALCULATE_SECONDS = () => {
     if (Time.seconds > 0) {
         Time.seconds > 1 ?
         Time.seconds = Time.seconds + ' seconds' : Time.seconds = Time.seconds + ' second'; 
     } else delete Time.seconds;
 }
 
-const formatResult = () => {
+const FORMAT_RESULT = () => {
     formattedTime = Object.values(Time).join(', ');
     const lastCommaIndex = formattedTime.lastIndexOf(', ');
     const lastValue = formattedTime.substring(lastCommaIndex, formattedTime.length).replace(/\,/g, ' and ');
@@ -87,12 +87,12 @@ const formatResult = () => {
 function formatDuration (seconds) {
     if (seconds == 0) return 'now';
     Time.seconds = seconds;
-    calculateYears();
-    calculateDays();
-    calculateHours();
-    calculateMinutes(seconds);
-    calculateSeconds(seconds);
-    formatResult();
+    CALCULATE_YEARS();
+    CALCULATE_DAYS();
+    CALCULATE_HOURS();
+    CALCULATE_MINUTES(seconds);
+    CALCULATE_SECONDS(seconds);
+    FORMAT_RESULT();
     return formattedTime;
 }
 console.log(formatDuration(3600))
