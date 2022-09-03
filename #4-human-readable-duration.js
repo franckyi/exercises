@@ -28,7 +28,7 @@ function formatDuration (seconds) {
             Time.days = Math.floor(Time.seconds / ONE_DAY);
             Time.seconds = Time.seconds - (Time.days * ONE_DAY);
         }
-        if (Time.days <= 0) { delete Time.days } 
+        if (Time.days <= 0) { delete Time['days'] } 
         Time.days == 1 ? Time.days += ' day' : Time.days += ' days';        
     }
     
@@ -55,6 +55,13 @@ function formatDuration (seconds) {
         Time.seconds == 1 ? Time.seconds += ' second' : Time.seconds += ' seconds';
     }
     
+    const keys = Object.keys(Time);
+    keys.forEach((key, index) => {
+        if (Time[key] === 0) {
+            delete Time[key];
+        }
+    });
+
     let formattedTime;
     const formatResult = () => {
         formattedTime = Object.values(Time).join(', ');
@@ -71,4 +78,4 @@ function formatDuration (seconds) {
     formatResult();
     return formattedTime;
 }
-console.log(formatDuration(31536000))
+console.log(formatDuration(1))
