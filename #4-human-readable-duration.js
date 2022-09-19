@@ -30,11 +30,8 @@ const calculateYears = () => {
         Time.years = Math.floor((Time.seconds / ONE_DAY) / 365);
         Time.seconds = Time.seconds - (Time.years * ONE_YEAR);
     }
-    console.log(Time['years']);
-    if (Time['years'] <= 0 || Time['years'] === 'undefined' || Time['years'] === 'null' ) {
-        delete Time['years'];
-    }
-    Time['years'] == 1 ? Time.years += ' year' : Time.years += ' years';    
+    if (Time['years'] <= 0) { delete Time['years']; }
+    else { Time['years'] == 1 ? Time.years += ' year' : Time.years += ' years'; }
 }
 
 const calculateDays = () => {
@@ -42,8 +39,8 @@ const calculateDays = () => {
         Time.days = Math.floor(Time.seconds / ONE_DAY);
         Time.seconds = Time.seconds - (Time.days * ONE_DAY);
     }
-    if (Time.days <= 0) { delete Time['days'] } 
-    Time.days == 1 ? Time.days += ' day' : Time.days += ' days';        
+    if (Time['days'] <= 0) { delete Time['days']; }
+    else { Time.days == 1 ? Time.days += ' day' : Time.days += ' days'; }        
 }
 
 const calculateHours = () => {
@@ -52,7 +49,7 @@ const calculateHours = () => {
         Time.seconds = Time.seconds - (Time.hours * ONE_HOUR);
     }
     if (Time.hours <= 0) { delete Time.hours }
-    Time.hours == 1 ? Time.hours += ' hour' : Time.hours += ' hours';
+    else { Time.hours == 1 ? Time.hours += ' hour' : Time.hours += ' hours'; }
 }     
 
 const calculateMinutes = () => {
@@ -61,14 +58,12 @@ const calculateMinutes = () => {
         Time.seconds = Time.seconds - (Time.minutes * ONE_MINUTE);
     }
     if (Time.minutes <= 0) { delete Time.minutes }
-    Time.minutes == 1 ? Time.minutes += ' minute' : Time.minutes += ' minutes';
+    else { Time.minutes == 1 ? Time.minutes += ' minute' : Time.minutes += ' minutes'; }
 }
 
 const calculateSeconds = () => {
     if (Time.seconds <= 0) { delete Time.seconds } 
-    Time.seconds == 1 ? Time.seconds += ' second' : Time.seconds += ' seconds';
-    if (Time['days'] === 'undefined') delete Time['days']
-    console.log(Time);
+    else { Time.seconds == 1 ? Time.seconds += ' second' : Time.seconds += ' seconds'; }
 }
 
 const cleanResult = () => {
@@ -78,5 +73,5 @@ const cleanResult = () => {
     formattedResult = formattedResult.substring(0,lastCommaIndex) + lastValue;
 }
 
-console.log(formatDuration(86400))
+console.log(formatDuration(3662));
 Time
