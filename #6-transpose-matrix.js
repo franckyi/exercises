@@ -16,15 +16,16 @@ function transpose(...matrix) {
   })
   items
 
-  items.forEach( function (item, index) {
+  items.forEach( (item, index) => {
     let row = [];
-
-  //   for (let i = index; i < items.length; i + nRows) {
-  //     if (item[i] !== undefined) {
-  //       row.push(item[i]);
-  //     }
-  //   }
-
+    index
+    item
+    // for (let i = index; i < nCols;) {
+    //   // if (item[i] !== undefined) {
+    //     row.push(item);
+    //   // }
+    //   i = i + nRows;
+    // }
     row
     result.push(row);
   })
