@@ -2,16 +2,18 @@ function transpose(...matrix) {
 
   let nRows = matrix[0].length;
   let nCols = matrix.length;
-  let listOfNums = [];
+  let nums = [];
 
   // extract numbers
   matrix.forEach(row => {
     row.forEach( r => {
-      listOfNums.push(r);
+      nums.push(r);
     })  
   })
 
-  listOfNums
+  console.log(nums);
+
+  // recreate nRows rows
 
   // rebuild rows
   for (let i = 0; i <= nRows; i + nRows) {
@@ -21,7 +23,7 @@ function transpose(...matrix) {
 
 }
 
-transpose( [ [1,2,3], [ [4,5,6] ] ] );
+// transpose( [ [1,2,3], [ [4,5,6] ] ] );
 
 /*
 - input is an array of matrix rows (array of arrays)
