@@ -11,6 +11,8 @@ function transpose(matrix) {
     })  
   })
 
+  console.log(listOfNums);
+
   // rebuild rows
   for (let i = 0; i < nRows; i + nRows) {
     
@@ -18,6 +20,8 @@ function transpose(matrix) {
 
 
 }
+
+matrix( [ [1,2,3], [ [4,5,6] ] ] );
 
 /*
 - input is an array of matrix rows (array of arrays)
