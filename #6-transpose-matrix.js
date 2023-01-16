@@ -14,7 +14,7 @@ function transpose(...matrix) {
   listOfNums
 
   // rebuild rows
-  for (let i = 0; i < nRows; i + nRows) {
+  for (let i = 0; i <= nRows; i + nRows) {
     
   }
 
