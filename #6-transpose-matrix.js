@@ -6,22 +6,26 @@ function transpose(...matrix) {
   let items = [];
   let result = [];
 
+  nRows
+  nCols
+
   matrix.forEach(row => {
     row.forEach( r => {
       items.push(r);
     })  
   })
+  items
 
   items.forEach( function (item, index) {
     let row = [];
 
-    for (let i = index; i < items.length; i + nRows) {
-      if (item[i] !== undefined) {
-        row.push(item[i]);
-      };
+  //   for (let i = index; i < items.length; i + nRows) {
+  //     if (item[i] !== undefined) {
+  //       row.push(item[i]);
+  //     }
+  //   }
 
-    }
-
+    row
     result.push(row);
   })
 
@@ -30,7 +34,7 @@ function transpose(...matrix) {
 
 }
 
-transpose( [ [1,2,3], [4,5,6] ] );
+transpose( [1,2,3], [4,5,6] );
 
 // [ [a,b,c],[d,e,f] ]  ==>  [ [a,d],[b,e],[c,f] ]
 // [ [1,2,3],[4,5,6] ]  ==>  [ [1,4],[2,5],[3,6] ]
