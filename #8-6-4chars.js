@@ -6,7 +6,9 @@ function friend(friends){
             filteredList.push(friends[i])
         }
     }
+
     return filteredList;
+    // console.log(filteredList);;
   }
  
 //   let friend=["Ryan", "Kieran", "Jason", "Yous"];
