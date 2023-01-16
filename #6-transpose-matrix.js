@@ -2,36 +2,49 @@ function transpose(...matrix) {
 
   let nRows = matrix[0].length;
   let nCols = matrix.length;
-  let nums = [];
+  let items = [];
+  let result = [];
 
-  // extract numbers
   matrix.forEach(row => {
     row.forEach( r => {
-      nums.push(r);
+      items.push(r);
     })  
   })
 
-  console.log(nums);
+  items.forEach( (item, index) => {
+    let row = [];
 
-  // recreate nRows rows
+    for (let i = index; i < items.length; i + nRows) {
+      if (item[i] !== undefined) {
+        row.push(item[i]);
+      };
+    }
 
-  // rebuild rows
-  for (let i = 0; i <= nRows; i + nRows) {
-    
-  }
+    result.push(row);
+  })
 
+
+
+  console.log(result)
 
 }
 
-// transpose( [ [1,2,3], [ [4,5,6] ] ] );
+transpose( [ [1,2,3], [ [4,5,6] ] ] );
+
+// [ [a,b,c],[d,e,f] ]  ==>  [ [a,d],[b,e],[c,f] ]
+
+
+
+
+// [ [1,2,3],[4,5,6] ]  ==>  [ [1,4],[2,5],[3,6] ]
+
+
 
 /*
 - input is an array of matrix rows (array of arrays)
 - columns and rows are swapped.
 - each row has the same length,
 - height and width are positive.
-
-[ [1,2,3],[4,5,6] ]  ==>  [ [1,4],[2,5],[3,6] ]
 
 For example, the transpose of:
 
