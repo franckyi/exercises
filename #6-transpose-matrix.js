@@ -1,23 +1,36 @@
 function transpose(...matrix) {
-  let nRows = matrix[0].length;
-  let nCols = matrix.length;
+
   let items = [];
+  let temp = [];
   let result = [];
-
-  matrix
-  items
-  nRows
-  nCols
-
+  
   matrix.forEach(row => {
     row.forEach( r => {
-      items.push(r);
+      if (typeof r !== 'undefined') { temp.push(r) };
     })  
   })
+  
+  temp.forEach( value => {
+    for (let i = 0; i < value.length; i++) {
+      console.log(value[i]);
+      if (typeof value[i] !== 'undefined') {
+        items.push(value[i])
+      };
+    }
+  })
 
-  if (matrix.length < 2) {
-    matrix[0].forEach((item, index) => {
-      if (item === undefined) { matrix[0].pop(matrix[0][index]) }
+  let nRows = temp[0].length;
+  let nCols = temp.length;
+  
+  matrix
+  temp
+  nRows
+  nCols
+  items
+
+  if (temp.length > 0 && temp.length < 2) {
+    temp[0].forEach((m, index) => {
+      if (typeof m === 'undefined') { temp[0].pop(temp[0][index]) }
     })
 
     let row = [];
@@ -26,7 +39,7 @@ function transpose(...matrix) {
     }
     result.push(row);
   }
-  else {
+  else if (temp.length >= 2) {
     for (let k = 0; k < nRows; k++) {
       let row = [];
       for (let i = 0; i <= nCols; i += nRows) {
@@ -34,7 +47,6 @@ function transpose(...matrix) {
         row.push(items[k+nRows]);
       }
       row.forEach( r => { if (r == undefined) row.pop(r) } );
-      row
       result.push(row);
     }
   }
@@ -44,8 +56,9 @@ function transpose(...matrix) {
 
 }
 
-transpose( ['a','b','c'],['d','e','f'] );
+transpose( [ [ 1, undefined ] ] );
 
+// expected [ [ 1, undefined ] ] to deeply equal [ [ 1 ] ]
 // [ 1, undefined ]
 // [ [ 1, undefined, 1, undefined ] ]
 // [ 1, 2, 1, 2 ]
