@@ -1,8 +1,10 @@
 function separate(str) {
-  let result = str.split(/\s/);
-  result
-  result.forEach( r => r.join(r.length) );
-  result
+  // let temp = str.split(/\s/);
+  // console.log(temp);
+  return str.split(/\s/).map( r => r + ' ' + r.length );
+  // console.log(temp);
+  // console.log(result);
+
 }
 
 separate('Mi chiamo Francky')
