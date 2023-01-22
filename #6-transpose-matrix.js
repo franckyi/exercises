@@ -1,73 +1,55 @@
-function transpose(...matrix) {
-  
-  let items = [];
-  let temp = [];
-  let result = [];
+function transpose(matrix) {
+
+  const nRows = matrix[0].length;
+  const nCols = matrix.length;
 
   console.log(matrix);
-  
-  // PUSH MATRIX TO TEMP
-  matrix.forEach(row => {
-    row.forEach( r => { console.log(row); if (r !== undefined) temp.push(r) });  
-  })
-
-  // TEMP CONTAINS INITIAL ROWS
-  console.log(temp);
-  console.log(temp.length);
-  
-  
-  // ACCESS TEMP VALUES
-    temp.forEach( t => {
-    for (let i = 0; i < t.length; i++) {
-      console.log(t[i]);
-        items.push(t[i])
-      }
-    });
-
-  // CHECK IF nRows EQUALS temp[0].length or matrix.length ?
-  let nRows = temp[0].length;
-  let nCols = temp.length;
-  
-  temp[0] = temp[0].filter( t => { return t!== undefined } );
-  items = items.filter( i => { return i!== undefined } );
-
-  console.log(matrix);
-  console.log(temp);
+  console.log(matrix[0][0]);
+  console.log(matrix.length);
   console.log(nRows);
   console.log(nCols);
-  console.log(items);
 
-  if (temp.length > 0 && temp.length < 2) {
-    // temp[0].forEach((m, index) => {
-      // if (typeof m === 'undefined') { temp[0].pop(temp[0][index]) }
-    // })
-
+  let result = [];
+  
+  for (let i=0; i<nRows; i++) {
     let row = [];
-    for (let i = 0; i <= nCols; i += nRows) {
-      row.push(items[i]);
+    
+    for (let m=0; m<matrix.length; m++) {
+      console.log(matrix[m][i]);
+      if (matrix[m][i] !== undefined) { 
+        row.push(matrix[m][i]) 
+      }
+      else continue;
     }
+    
+    console.log(row);
+
     result.push(row);
   }
-  
-  else if (temp.length >= 2) {
-    for (let k = 0; k < nRows; k++) {
-      let row = [];
-      for (let i = 0; i <= nCols; i += nRows) {
-        row.push(items[k]);
-        row.push(items[k+nRows]);
-      }
-      // row.forEach( r => { if (r === undefined) row.pop(r) } );
-      row = row.filter( r => {return r!== undefined} );
-      result.push(row);
-    }
-  }
+
 
   console.log(result);
   return result;
-
+  
+  
 }
 
-transpose( [ [ 1, undefined ] ] );
+transpose( [ ['a','c',2],['e',1,'f'] ] );
+
+
+
+
+/*
+
+| 1 2 3 |
+| 4 5 6 |
+
+
+| 1 4 |
+| 2 5 |
+| 3 6 |
+
+*/
 
 // expected [ [ 1, undefined ] ] to deeply equal [ [ 1 ] ]
 // [ 1, undefined ]
