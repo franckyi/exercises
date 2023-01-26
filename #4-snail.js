@@ -41,12 +41,14 @@ snail = function(arr) {
     console.log(arr);
     
     arr.shift();
-    arr.pop();
-    arr.forEach( e => arr.unshift(e[0]) );
-    arr.forEach( e => arr.pop(e[e.length-1]) );
-
     console.log(arr);
-
+    arr.pop();
+    console.log(arr);
+    arr.forEach( a => a.shift() );
+    console.log(arr);
+    arr.forEach( a => a.pop() );
+    console.log(arr);
+    
   }
 
   if (arr.length == 1) temp.push(arr[0]);
