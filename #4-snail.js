@@ -1,6 +1,4 @@
 snail = function(arr) {
-  // enjoy
-  // console.log(array.length);
 
   let temp = [];
   let result = Array(arr.length);
@@ -29,6 +27,10 @@ snail = function(arr) {
       temp.push(d[i]);
     }    
 
+    arr.shift();
+    arr.pop();
+    arr.map( e, i => e[i].unshift() );
+
   }
 
   if (arr.length == 1) temp.push(arr[0]);
@@ -46,4 +48,4 @@ snail = function(arr) {
 
 }
 
-snail( [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ] )
+snail( [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ] );
