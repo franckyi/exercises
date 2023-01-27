@@ -1,9 +1,19 @@
 snail = function(arr) {
 
   console.log(arr.length);
+  let length = arr.length;
+  console.log(length);
 
   let temp = [];
-  let result = Array(arr.length);
+  let result = new Array(length);
+
+  for (let i = 0; i < length; i++) {
+    result[i] = new Array(arr[0].length);
+    // temp.shift();
+    // console.log(temp);
+  }
+  console.log(result);
+
 
   while (arr.length > 1) {
     let a = arr[0];
@@ -49,22 +59,54 @@ snail = function(arr) {
     arr.forEach( a => a.pop() );
     console.log(arr);
     
+    console.log(arr);
+    console.log(arr[0]);
+
+    if (arr.length == 1) temp.push(arr[0][0]);
+    console.log(temp);
+
   }
 
-  if (arr.length == 1) temp.push(arr[0]);
-  
   console.log(temp);
+  console.log(result);
 
+  // TODO VERIFICARE PERCHE NON FUNZIONA
+  let k = 0; 
+  result.forEach( r => {
+    console.log(r);
+
+    for (let i = 0; i < r.length; i++, k++) {
+      console.log(temp[k]);
+      r = temp[k];
+    }
+
+  });
+
+  console.log(result); // PERCHE E' VUOTO?
+
+  
+  
+  
   // let ti = 0;
-  // result.forEach( r => {
-  //   for(let i = 0; i < r.length; i++) {
-  //     r[i] = temp[ti];
+  // for (let i = 0; i < length; i++) {
+  //   let row = [];
+  //   console.log(temp[i]);
+  //   row.push(temp[i]);
+  //   console.log(row);
+  // }
+
+  //  result.forEach( (r, i) => {
+  //   // console.log(r);
+  //   for (let i = 0; i < arr.length; i++) {
+  //     console.log('test');
+  //     r.push(temp[ti]);
   //     ti++
   //   }
+  //   ti++
   // });
-
-  // console.log(result);
-  // return result;
+  
+  
+  return result;
 
 }
 
