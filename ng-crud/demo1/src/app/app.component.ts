@@ -7,10 +7,11 @@ import { User } from './model/user';
   <div class="container">
     <h1>Users</h1>
     <ul class="list-group">
-    <li *ngFor="let u of users" class="list-group-item"
+    <li
+      *ngFor="let u of users" class="list-group-item"
       [ngClass]="{
         'male': u.gender === 'M',
-        'female': u.gender === 'F',
+        'female': u.gender === 'F'
       }"
     >
       <i class="fa fa-3x"
@@ -20,6 +21,7 @@ import { User } from './model/user';
         }"
         ></i>
       {{u.label}}
+      <i class="fa fa-trash fa-2x pull-right" (click)="deleteHandler(u)"></i>
     </li>
     </ul>
   </div>
@@ -30,9 +32,15 @@ import { User } from './model/user';
 `]
 })
 export class AppComponent {
+
   users: User[] = [                                 // list of users
-  { id: 1, label: 'Fabio', gender: 'M', age: 20 },
-  { id: 2, label: 'Lorenzo', gender: 'M', age: 37 },
-  { id: 3, label: 'Silvia', gender: 'F', age: 70 },
-];
+    { id: 1, label: 'Fabio', gender: 'M', age: 20 },
+    { id: 2, label: 'Lorenzo', gender: 'M', age: 37 },
+    { id: 3, label: 'Silvia', gender: 'F', age: 70 },
+  ];
+
+  deleteHandler(userToRemove : User) {
+    this.users = this.users.filter(u => u.id !== userToRemove.id);
+  }
+
 }
