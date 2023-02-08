@@ -6,6 +6,40 @@ import { User } from './model/user';
   template: `
   <div class="container">
     <h1>Users</h1>
+
+    <form
+      class="card card-body mt-3"
+      #f="ngForm"
+      (submit)="saveHandler(f)"
+    >
+      <input
+        type="text"
+        ngModel
+        name="label"
+        placeholder="Add user name"
+        class="form-control"
+        required
+      >
+
+      <select
+        ngModel
+        name="gender"
+        class="form-control"
+        required
+      >
+        <option value="">Select option</option>
+        <option value="M">M</option>
+        <option value="F">F</option>
+      </select>
+
+      <button
+        class="btn btn-dark"
+        [disabled]="f.invalid"
+      >Save</button>
+    </form>
+
+    <hr>
+
     <ul class="list-group">
     <li
       *ngFor="let u of users" class="list-group-item"
