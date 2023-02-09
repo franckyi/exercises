@@ -38,8 +38,12 @@ import { NgForm } from '@angular/forms';
       </select>
 
       <button
-        class="btn btn-dark"
+        class="btn"
         [disabled]="f.invalid"
+        [ngClass]="{
+        'btn-success': f.valid,
+        'btn-danger': f.invalid
+        }"
       >Save</button>
     </form>
 
@@ -68,6 +72,7 @@ import { NgForm } from '@angular/forms';
   styles: [`
   .male { background-color: #36caff; }
   .female { background-color: pink; }
+  .card { transition: all 0.5s }
 `]
 })
 export class AppComponent {
