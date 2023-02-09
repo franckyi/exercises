@@ -24,6 +24,8 @@ import { NgForm } from '@angular/forms';
         placeholder="Add user name"
         class="form-control"
         required
+        #labelInput="ngModel"
+        [ngClass]="{'is-invalid': labelInput.invalid && f.dirty}"
       >
 
       <select
@@ -31,6 +33,8 @@ import { NgForm } from '@angular/forms';
         name="gender"
         class="form-control"
         required
+        #genderInput="ngModel"
+        [ngClass]="{'is-invalid': genderInput.invalid && f.dirty}"
       >
         <option value="">Select option</option>
         <option value="M">M</option>
