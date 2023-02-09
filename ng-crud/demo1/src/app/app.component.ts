@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './model/user';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -75,6 +76,13 @@ export class AppComponent {
 
   deleteHandler(userToRemove : User) {
     this.users = this.users.filter(u => u.id !== userToRemove.id);
+  }
+
+  saveHandler(f: NgForm) {
+    const user = f.value as User;
+    user.id = Date.now(); // create a fake ID (i.e. a timestamp)
+    this.users = [...this.users, user]
+    f.reset({gender: ''});
   }
 
 }
