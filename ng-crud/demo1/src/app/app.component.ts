@@ -12,6 +12,10 @@ import { NgForm } from '@angular/forms';
       class="card card-body mt-3"
       #f="ngForm"
       (submit)="saveHandler(f)"
+      [ngClass]="{
+      'male': f.value.gender === 'M',
+      'female': f.value.gender === 'F'
+      }"
     >
       <input
         type="text"
