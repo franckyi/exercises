@@ -143,84 +143,106 @@ function sudoku(puzzle) {
   console.log(row7Nums);
   console.log(row8Nums);
 
-    // count filled cols and collect values
-    let col0Nums = [];
-    let col1Nums = [];
-    let col2Nums = [];
-    let col3Nums = [];
-    let col4Nums = [];
-    let col5Nums = [];
-    let col6Nums = [];
-    let col7Nums = [];
-    let col8Nums = [];
+  // collect rows possible solutions
+  let row0Possibilities = [];
+  let row1Possibilities = [];
+  let row2Possibilities = [];
+  let row3Possibilities = [];
+  let row4Possibilities = [];
+  let row5Possibilities = [];
+  let row6Possibilities = [];
+  let row7Possibilities = [];
+  let row8Possibilities = [];
 
-    cols[0].map( v => {
-      if (v !== 0) {
-        c0Filled++;
-        col0Nums.push(v);
-      }
-    });
+  // count filled cols and collect values
+  let col0Nums = [];
+  let col1Nums = [];
+  let col2Nums = [];
+  let col3Nums = [];
+  let col4Nums = [];
+  let col5Nums = [];
+  let col6Nums = [];
+  let col7Nums = [];
+  let col8Nums = [];
 
-    cols[1].map( v => {
-      if (v !== 0) {
-        c1Filled++;
-        col1Nums.push(v);
-      }
-    });
+  cols[0].map( v => {
+    if (v !== 0) {
+      c0Filled++;
+      col0Nums.push(v);
+    }
+  });
 
-    cols[2].map( v => {
-      if (v !== 0) {
-        c2Filled++;
-        col2Nums.push(v);
-      }
-    });
-    cols[3].map( v => {
-      if (v !== 0) {
-        c3Filled++;
-        col3Nums.push(v);
-      }
-    });
-    cols[4].map( v => {
-      if (v !== 0) {
-        c4Filled++;
-        col4Nums.push(v);
-      }
-    });
-    cols[5].map( v => {
-      if (v !== 0) {
-        c5Filled++;
-        col5Nums.push(v);
-      }
-    });
-    cols[6].map( v => {
-      if (v !== 0) {
-        c6Filled++;
-        col6Nums.push(v);
-      }
-    });
-    cols[7].map( v => {
-      if (v !== 0) {
-        c7Filled++;
-        col7Nums.push(v);
-      }
-    });
-    cols[8].map( v => {
-      if (v !== 0) {
-        c8Filled++;
-        col8Nums.push(v);
-      }
-    });
+  cols[1].map( v => {
+    if (v !== 0) {
+      c1Filled++;
+      col1Nums.push(v);
+    }
+  });
 
-    // PREVIEW FILLED COLS
-    console.log(col0Nums);
-    console.log(col1Nums);
-    console.log(col2Nums);
-    console.log(col3Nums);
-    console.log(col4Nums);
-    console.log(col5Nums);
-    console.log(col6Nums);
-    console.log(col7Nums);
-    console.log(col8Nums);
+  cols[2].map( v => {
+    if (v !== 0) {
+      c2Filled++;
+      col2Nums.push(v);
+    }
+  });
+  cols[3].map( v => {
+    if (v !== 0) {
+      c3Filled++;
+      col3Nums.push(v);
+    }
+  });
+  cols[4].map( v => {
+    if (v !== 0) {
+      c4Filled++;
+      col4Nums.push(v);
+    }
+  });
+  cols[5].map( v => {
+    if (v !== 0) {
+      c5Filled++;
+      col5Nums.push(v);
+    }
+  });
+  cols[6].map( v => {
+    if (v !== 0) {
+      c6Filled++;
+      col6Nums.push(v);
+    }
+  });
+  cols[7].map( v => {
+    if (v !== 0) {
+      c7Filled++;
+      col7Nums.push(v);
+    }
+  });
+  cols[8].map( v => {
+    if (v !== 0) {
+      c8Filled++;
+      col8Nums.push(v);
+    }
+  });
+
+  // PREVIEW FILLED COLS
+  console.log(col0Nums);
+  console.log(col1Nums);
+  console.log(col2Nums);
+  console.log(col3Nums);
+  console.log(col4Nums);
+  console.log(col5Nums);
+  console.log(col6Nums);
+  console.log(col7Nums);
+  console.log(col8Nums);
+
+  // collect cols possible solutions
+  let col0Possibilities = [];
+  let col1Possibilities = [];
+  let col2Possibilities = [];
+  let col3Possibilities = [];
+  let col4Possibilities = [];
+  let col5Possibilities = [];
+  let col6Possibilities = [];
+  let col7Possibilities = [];
+  let col8Possibilities = [];
 
   // collect values from rows
   // rows[0].filter( v => { if (v !== 0) r0Filled++ } );
