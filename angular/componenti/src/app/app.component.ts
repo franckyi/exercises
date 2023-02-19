@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
-// interface Prodotto {
-//   quantita: number;
-//   nome: string;
-// }
+interface Prodotto {
+  quantita: number;
+  nome: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,7 @@ export class AppComponent {
   like: boolean = false;
   counter: number = 1;
   btnLike = 'LIKE';
-  prodotti = [
+  prodotti: Prodotto[] = [
     { quantita: 3, nome: 'mele' },
     { quantita: 1, nome: 'pasta' },
     { quantita: 1, nome: 'latte' },
