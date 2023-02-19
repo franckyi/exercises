@@ -1,7 +1,7 @@
 <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-title>{{ 1+1 === 2 ? 'Fa 2' : 'Sbagliato' }}</mat-card-title>
     <mat-card-subtitle>Dog Breed</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
@@ -13,8 +13,28 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button (click)="like = !like"
+      [innerHTML]="btnLike"></button>
+    <span>{{ like? 'ti piace!' : 'non ti piace' }}</span>
+    <button mat-button (click)="counter = counter - 1">-</button>
+    <span
+      [class]="counter >= 0 ? 'green' : 'red'"
+      [style.font-size]="16 + counter + 'px'">
+      {{ counter }} /
+    </span>
+    <span *ngIf="counter !== 0"
+      [ngClass]="{'green' : counter >= 0}"
+      [ngStyle]="{ 'font-size' : 16 + counter + 'px' }">
+      {{ counter }}
+    </span>
+    <button mat-button (click)="increment()">+</button>
+    <span
+      [class]="getClass()"
+      [style.font-size.px]="16 + counter">
+      <!-- {{ counter >= 0 ? 'positivo' : 'negativo' }} -->
+      {{ getLabel() }}
+    </span>
+    <button *ngIf="like" mat-button>SHARE</button>
   </mat-card-actions>
 </mat-card>
 
