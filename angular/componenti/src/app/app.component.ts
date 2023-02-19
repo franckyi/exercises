@@ -14,7 +14,7 @@ export class AppComponent {
 
   like: boolean = false;
   counter: number = 1;
-  btnLike = 'LIKE';
+  btnLike: string = 'LIKE';
   prodotti: Prodotto[] = [
     { quantita: 3, nome: 'mele' },
     { quantita: 1, nome: 'pasta' },
