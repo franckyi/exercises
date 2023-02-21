@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Item } from './item';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,10 @@ import { Component } from '@angular/core';
         (keyup.enter)="addItem(newItem.value); newItem.value = ''"
       />
 
-      <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+      <button class="btn-primary"
+      (click)="addItem(newItem.value); newItem.value = ''">
+        Add
+      </button>
 
       <ul>
         <li *ngFor="let item of items">{{item.description}}</li>
