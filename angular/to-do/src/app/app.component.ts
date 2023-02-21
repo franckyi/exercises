@@ -7,10 +7,19 @@ import { Component } from '@angular/core';
       <h1>My To Do List</h1>
       <label for="addItemInput">What would you like to do today?</label>
 
+      <input id="addItemInput" placeholder="add item" class="lg-text-input"
+        #newItem
+        (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+      />
+
+      <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+
       <ul>
         <li *ngFor="let item of items">{{item.description}}</li>
       </ul>
+
     </div>
+
   `,
   styleUrls: ['./app.component.css']
 })
