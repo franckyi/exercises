@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Item } from "../item";
 
 @Component({
@@ -6,12 +6,7 @@ import { Item } from "../item";
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
-export class ItemComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class ItemComponent {
 
   editable = false;
 
@@ -24,5 +19,5 @@ export class ItemComponent implements OnInit {
     this.editable = false;
     this.item.description = description;
   }
-
 }
+

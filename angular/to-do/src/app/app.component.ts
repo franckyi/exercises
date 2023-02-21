@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { Item } from './item';
 
 @Component({
@@ -26,7 +26,6 @@ import { Item } from './item';
           <app-item (remove)="remove(i)" [item]="i"></app-item>
         </li>
       </ul>
-
 
     </div>
 
@@ -63,6 +62,10 @@ export class AppComponent {
         done: false
       }
     )
+  }
+
+  remove(item: Item) {
+    this.allItems.splice(this.allItems.indexOf(item), 1);
   }
 
 }
