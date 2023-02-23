@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../products';
+import { Product } from '../products'; // importa solo l'interfaccia "Product"
 
 @Component({
   selector: 'app-product-alerts',
@@ -13,6 +13,7 @@ export class ProductAlertsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() product!: Product;
+  @Input() productPassato!: Product; // crea una proprieta' productPassato
+                                     // e abilita l'utilizzo di [productPassato]="" nel template
 
 }
