@@ -17,8 +17,19 @@
   </button>
 
   <app-product-alerts
-  [productPassato]="product"> <!-- il "product" viene passato a "productPassato" -->
-  </app-product-alerts> <!-- e' un property binding, da template padre a template figlio -->
-                        <!-- productPassato potra' quindi essere usato nel template figlio -->
+  [productPassato]="product"
+  (notify)="onNotify()">
+  </app-product-alerts>
+  <!--
+    [productPassato]="product"
+    il "product" viene passato a "productPassato" e' un property binding,
+    da template padre a template figlio productPassato potra'
+    quindi essere usato anche nel template figlio.
+
+    (notify)="onNotify()"
+    (notify) notify e' passato dal componente figlio
+    e al cambiare del suo valore, parte il metodo onNotify()
+
+  -->
 
 </div>

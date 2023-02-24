@@ -1,3 +1,4 @@
-<p *ngIf="productPassato && productPassato.price > 700"> <!-- vede productPassato (dal for product of _products) -->
-  <button type="button">Notify Me</button> <!-- nel template di product-list -->
+<p *ngIf="productPassato && productPassato.price > 700">
+<!-- vede productPassato (dal for product of _products) -->
+  <button type="button" (click)="notify.emit()">Notify Me</button><!-- nel template di product-list -->
 </p>

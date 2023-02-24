@@ -20,6 +20,10 @@ export class ProductListComponent implements OnInit {
     window.alert('The product has been shared!');
   }
 
+  onNotify() {
+    window.alert('E\' partito (click)="notify.emit() dal template figlio poi (notify)="onNotify()" dal template genitore infine onNotify(questo messaggio) dal componente genitore');
+  }
+
 
 }
 
