@@ -15,7 +15,6 @@ export class AppComponent {
 
   constructor(private api: GetUserService) {
     this.ListOfUsers = api.getUsers();
-    console.log(this.ListOfUsers);
   }
 
 }
