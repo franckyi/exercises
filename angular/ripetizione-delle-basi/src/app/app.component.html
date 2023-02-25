@@ -1,1 +1,31 @@
-<h1>{{ 1 + 1 }}</h1>
+<h1 [innerHTML]="title"></h1>  
+<h2 [ngClass]="{ 'blue': counter === 0 }">Counter = {{ counter }}</h2>
+<button (click)="counter = counter - 1">-</button>
+<button (click)="increment()">+</button>
+
+<p *ngIf="counter !== 0" 
+   [class]="counter > 0 ? 'green' : 'red'"
+   [ngStyle]="{ 'font-size': 20 + counter + 'px' }">
+    {{ counter > 0 ? 'positive' : 'negative' }}
+</p>
+<span [class]="getClass()">{{ getLabel() }}</span>
+
+<h3 [style.font-size]="20 + counter + 'px'">
+    font-size = {{ 20 + counter }} px
+</h3>
+
+<h3 *ngIf="counter !== 0">Visibile se counter !== 0</h3>
+
+<input type="text" (change)="change()">
+
+<button (click)="click('ciao')">click</button>
+<a [style.font-size.px]="20 + counter"
+   style="display: block;"
+   [href]="url" target="_blank">
+   link
+</a>
+
+<h3>Lista della spesa</h3>
+<ul>
+    <li *ngFor="let item of spesa">{{ item }}</li>
+</ul>
