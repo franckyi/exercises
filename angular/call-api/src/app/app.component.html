@@ -1,7 +1,14 @@
-<!-- <ul>
-  <li *ngFor="let user of ListOfUsers"></li>
-</ul> -->
-
-<div>
-  {{ ListOfUsers }}
-</div>
+<table border="1">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Website</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{user.id}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.website}}</td>
+  </tr>
+</table>
