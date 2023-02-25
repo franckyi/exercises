@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './User';
 import { AppService } from './app.service';
-// import { Observable } from 'rxjs';
-// import { GetUserService } from './get-user.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +10,7 @@ export class AppComponent implements OnInit {
   title = 'call-api';
   public users: any = [];
 
-  // ListOfUsers: Observable<User>;
-
-  constructor(private _appService: AppService) {
-    // this.ListOfUsers = api.getUsers();
-  }
+  constructor(private _appService: AppService) { }
 
   ngOnInit(): void {
     this._appService.getUsers().subscribe( users => {
