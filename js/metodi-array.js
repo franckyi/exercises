@@ -48,19 +48,23 @@ calciatori.forEach((item) => {
 //   .reduce((prev, next) => prev + next); // somma i gol
 // console.log(somma);
 
-// Trova Lewandowski (solo 1 istanza)
+// Trova Lewandowski (trova il primo risultato)
 // const lewandowski = calciatori.find((item) => item.nome === 'Lewandowski');
 // console.log(lewandowski);
 
+// Trova tutti i giocatori con nome per D
+const D = calciatori.filter((item) => item.nome[0] === 'D');
+console.log(D);
+
 // Ordina per nome in ordine alfabetico
-const pernome = calciatori.sort((a, b) => {
-  const A = a.nome.toUpperCase();
-  const B = b.nome.toUpperCase();
-  if (A < B) return -1;
-  if (A > B) return 1;
-  return 0;
-});
-console.log(pernome);
+// const pernome = calciatori.sort((a, b) => {
+//   const A = a.nome.toUpperCase();
+//   const B = b.nome.toUpperCase();
+//   if (A < B) return -1;
+//   if (A > B) return 1;
+//   return 0;
+// });
+// console.log(pernome);
 
 // Ordina per nome squadra
 // const persquadra = calciatori.sort((a, b) => {
