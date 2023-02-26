@@ -8,7 +8,7 @@ export class AppService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  getTodos() {
+  getPosts() {
     return this._httpClient.get('https://jsonplaceholder.typicode.com/posts');
   }
 

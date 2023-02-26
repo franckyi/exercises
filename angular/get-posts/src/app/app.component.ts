@@ -9,14 +9,19 @@ import { AppService } from './app.service';
 export class AppComponent implements OnInit {
 
   title = 'get-posts';
-  public posts: any = [];
+  public listOfPosts: any = [];
+  // creo una variabile per ospitare i dati dell'API
 
   constructor(private _appService: AppService) {}
 
   ngOnInit(): void {
+    // la chiamata parte qui
     this._appService.getPosts().subscribe( posts => {
-      this.posts = posts;
+      this.listOfPosts = posts;
+      // a listOfPosts assegno i dati ottenuti dall'API
     })
+    // getPosts() restituisce un Observable
+    // subscribe() restituisce i dati (posts in questo caso)
   }
 
 }
