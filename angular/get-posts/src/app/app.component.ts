@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './app.service';
+// import { Post } from './Post';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +16,10 @@ export class AppComponent implements OnInit {
   constructor(private _appService: AppService) {}
 
   ngOnInit(): void {
-    // la chiamata parte qui
+    // la chiamata parte da qui
     this._appService.getPosts().subscribe( posts => {
       this.listOfPosts = posts;
+      // console.log(this.listOfPosts);
       // a listOfPosts assegno i dati ottenuti dall'API
     })
     // getPosts() restituisce un Observable
