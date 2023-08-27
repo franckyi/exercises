@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <!-- <h1>Parent Title</h1> -->
-    <app-child (childToParentEvent)="takeFromChild($event)" [value]="data"></app-child>
+    <app-child (childToParentEvent)="takeFromChild($event)" [valueFromParent]="data"></app-child>
     <p>from child: {{textFromChild}}</p>
   `,
   styleUrls: ['./app.component.css']
